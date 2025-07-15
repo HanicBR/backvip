@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VIP - Backstabber Brasil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* Theme Colors */
+    :root {
+      --blood-red: #B33141;
+      --graphite-gray: #1E1E1E;
+      --soft-silver: #D1DBDD;
+      --dark-gray: #2b2b2b;
+    }
+
+    /* Base Styles */
+    body {
+      background-color: var(--graphite-gray);
+      color: var(--soft-silver);
+      font-family: 'Roboto', 'sans-serif';
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    /* Container */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* Typography */
+    h1, h2 {
+      font-family: 'Roboto Condensed', 'sans-serif';
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    h1 {
+      text-align: center;
+      color: white;
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      text-shadow: 0 0 10px var(--blood-red);
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      color: var(--soft-silver);
+      border-bottom: 1px solid #444;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    p, li {
+      font-size: 1rem;
+    }
+
+    a {
+      color: var(--blood-red);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+    
+    strong {
+      color: white;
+    }
+
+    /* Content Blocks */
+    .content-block {
+      background-color: var(--dark-gray);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border-left: 5px solid var(--blood-red);
+      border-radius: 0 8px 8px 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+    
+    /* Command List */
+    .command-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .command-list li {
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
+    }
+
+    .command-list code {
+      background-color: var(--graphite-gray);
+      color: white;
+      padding: 0.2em 0.5em;
+      border-radius: 4px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1rem;
+      border: 1px solid #444;
+    }
+
+    /* Price & Disclaimer */
+    .price-note {
+      text-align: center;
+      font-size: 1.1rem;
+      margin-top: 2rem;
+      padding: 1rem;
+      background: rgba(0,0,0,0.2);
+      border-radius: 4px;
+    }
+    
+    .disclaimer {
+      background-color: rgba(179, 49, 65, 0.1);
+      border: 1px solid var(--blood-red);
+      padding: 1rem;
+      margin-top: 2rem;
+      border-radius: 4px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--soft-silver);
+    }
+    
+    /* Action Button */
+    .action-button {
+      display: inline-block;
+      margin-top: 0.75rem;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--graphite-gray);
+      border: 2px solid var(--blood-red);
+      color: var(--soft-silver);
+      font-family: 'Roboto Condensed', 'sans-serif';
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .action-button:hover {
+      background-color: var(--blood-red);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(179, 49, 65, 0.5);
+      text-decoration: none;
+    }
+
+    /* Steps List */
+    .steps-list {
+      list-style-type: none;
+      padding: 0;
+      counter-reset: steps-counter;
+    }
+    
+    .steps-list li {
+      display: flex;
+      align-items: flex-start; /* number + content top-aligned */
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    
+    .steps-list li::before {
+      counter-increment: steps-counter;
+      content: counter(steps-counter);
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--blood-red);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .step-content {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;  /* keep the text at the top */
+      gap: 1.5rem;
+    }
+    
+    .step-description {
+      flex: 1;
+    }
+
+    .step-img {
+      max-width: 300px;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 4px;
+      flex-shrink: 0;
+      border: 1px solid #555;
+      background-color: #444;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .step-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .step-img {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 640px) {
+      h1 {
+        font-size: 2rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+      .container {
+        padding: 1.5rem 1rem;
+      }
+      .content-block {
+        padding: 1.5rem;
+      }
+      .steps-list li {
+        gap: 1rem;
+      }
+      .steps-list li::before {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Backstabber Brasil - VIP</h1>
+
+    <!-- VIP Advantages Block -->
+    <section class="content-block">
+      <h2>Vantagens VIP</h2>
+      <ul class="command-list">
+        <li><code>!noclip</code> — Use o noclip (Voar) mesmo estando no modo PVP</li>
+        <li><code>!bring &lt;jogador&gt;</code> — Teleporta o jogador até você.</li>
+        <li><code>!goto &lt;jogador&gt;</code> — Teleporta você até a posição do jogador.</li>
+        <li><code>!return [jogador]</code> — Retorna o jogador à posição antes de um teleporte.</li>
+        <li><code>!armor &lt;jogador&gt; &lt;0-255&gt;</code> — Define a armadura do jogador. Útil para desafios e customizações rápidas.</li>
+        <li><code>!cloak &lt;jogador&gt; [0-255]</code> — Torna o jogador invisível temporariamente.</li>
+        <li><code>!slap &lt;jogador&gt; [dano]</code> — Dá um tapinha que empurra o alvo; divertido em roleplays leves.</li>
+        <li><code>@@ &lt;mensagem&gt; (!tsay)</code> — Envia uma mensagem para todo mundo no chat de forma discreta.</li>
+      </ul>
+      <p class="price-note">
+        <strong>Preço: R$10 por 30 dias.</strong> Cada R$1 extra adiciona 3 dias de VIP.
+      </p>
+      <div class="disclaimer">
+        O uso excessivo de qualquer um desses comandos para incomodar outros jogadores ou prejudicar o servidor resultará na remoção de todos os seus benefícios VIP.
+      </div>
+    </section>
+
+    <!-- How to Become VIP Block -->
+    <section class="content-block">
+      <h2>Como se Tornar VIP</h2>
+      <ol class="steps-list">
+        <li>
+          <div class="step-content">
+            <div class="step-description">
+              <p><strong>Entre no nosso Discord</strong> para iniciar o processo.</p>
+              <a href="https://discord.com/invite/FyTJDRMGQh" target="_blank" rel="noopener noreferrer" class="action-button">Acessar Discord</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <div class="step-description">
+              <p><strong>Vá para a aba de doações</strong> no servidor do Discord.</p>
+            </div>
+            <img src="https://i.imgur.com/f291NUD.png" alt="Aba de doações no Discord" class="step-img">
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <div class="step-description">
+              <p><strong>Preencha o formulário</strong> informando para quem é o VIP e os detalhes para a entrega.</p>
+            </div>
+            <img src="https://i.imgur.com/ScFHZDu.png" alt="Formulário de doação" class="step-img">
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <div class="step-description">
+              <p><strong>Efetue o pagamento via PIX</strong>. Você receberá uma chave para a doação. Após o pagamento, envie o comprovante no ticket que foi aberto para você.</p>
+            </div>
+            <img src="https://i.imgur.com/Gns0Ght.png" alt="Mensagem com instruções de pagamento PIX" class="step-img">
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <div class="step-description">
+              <p><strong>Pronto!</strong> Seu cargo VIP será ativado em até 24 horas após a confirmação do pagamento.</p>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+  </div>
+
+</body>
+</html>
